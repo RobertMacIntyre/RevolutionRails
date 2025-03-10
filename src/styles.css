@@ -11,7 +11,7 @@ body {
   text-align: center;
   line-height: 1.6;
   overflow-x: hidden;
-  padding-top: 70px; /* Adjust padding to prevent navbar overlap */
+  padding-top: 80px; /* Adjusted to prevent navbar overlap */
 }
 
 /* Navbar Styling */
@@ -23,31 +23,42 @@ body {
   align-items: center;
   position: fixed;
   top: 0;
+  left: 0;
   width: 100%;
   z-index: 1000;
   transition: all 0.3s ease-in-out;
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  overflow-x: auto; /* Enable horizontal scrolling if needed */
+  white-space: nowrap; /* Prevent line breaks */
 }
 
 /* Navbar Title */
-.navbar-title {
+.logo {
   font-size: 20px;
   font-weight: 600;
   color: white;
   text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.3);
-  padding: 5px 15px;
-  background: rgba(255, 255, 255, 0.15);
-  border-radius: 8px;
-  backdrop-filter: blur(5px);
+  margin-left: 15px;
+  flex-shrink: 0;
 }
 
 /* Navbar Links */
 .nav-links {
   display: flex;
   gap: 20px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  overflow-x: auto; /* Allow horizontal scrolling */
+  white-space: nowrap;
 }
 
-.navbar a {
+.nav-links li {
+  display: inline;
+  flex-shrink: 0;
+}
+
+.nav-links a {
   color: white;
   text-decoration: none;
   font-size: 16px;
@@ -57,14 +68,14 @@ body {
   transition: all 0.3s ease-in-out;
 }
 
-.navbar a:hover {
+.nav-links a:hover {
   background-color: white;
   color: #a60000;
   transform: scale(1.1);
 }
 
 /* Mobile Menu Icon */
-.menu-icon {
+.menu-toggle {
   cursor: pointer;
   font-size: 28px;
   color: white;
@@ -75,7 +86,7 @@ body {
 
 /* Responsive Navbar for Mobile */
 @media (max-width: 768px) {
-  .menu-icon {
+  .menu-toggle {
     display: block;
   }
 
@@ -89,6 +100,8 @@ body {
     background-color: #a60000;
     padding: 15px 0;
     text-align: center;
+    max-height: 400px; /* Limit height to enable scrolling */
+    overflow-y: auto;
   }
 
   .nav-links.active {
@@ -150,21 +163,17 @@ h2 {
   border-bottom: 2px solid #ffcc00;
 }
 
-.dark-mode .navbar-title {
+.dark-mode .logo {
   color: white;
-  background: rgba(255, 255, 255, 0.1);
   text-shadow: 1px 1px 6px rgba(255, 255, 255, 0.3);
-  border: 2px solid white;
-  padding: 8px 15px;
-  border-radius: 10px;
 }
 
-.dark-mode .navbar a {
+.dark-mode .nav-links a {
   color: white;
   font-weight: 500;
 }
 
-.dark-mode .navbar a:hover {
+.dark-mode .nav-links a:hover {
   color: #ffcc00;
   text-decoration: underline;
 }
@@ -186,3 +195,94 @@ h2 {
   text-shadow: 1px 1px 4px rgba(255, 255, 255, 0.3);
   border-bottom: 2px solid #ffcc00;
 }
+/* Dark Mode */
+.dark-mode {
+  background-color: #121212;
+  color: white;
+  transition: background 0.3s ease-in-out;
+}
+
+/* Light Switch Styling */
+.light-switch {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  width: 50px;
+  height: 100px;
+  background: #ddd;
+  border-radius: 10px;
+  border: 2px solid #bbb;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  cursor: pointer;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+/* Switch Toggle (Moving Part) */
+.switch-toggle {
+  width: 30px;
+  height: 40px;
+  background: #fff;
+  border-radius: 5px;
+  box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease-in-out;
+}
+
+/* Switch "On" Position */
+.on {
+  transform: translateY(-25px);
+  background: #ffcc00;
+}
+
+/* Switch "Off" Position */
+.off {
+  transform: translateY(25px);
+  background: #777;
+}
+/* Light Switch Styling */
+.light-switch {
+  position: fixed;
+  top: 80px; /* Below the navbar */
+  right: 20px;
+  width: 40px;
+  height: 80px;
+  background: #ccc;
+  border-radius: 8px;
+  border: 2px solid #aaa;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  cursor: pointer;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+  transition: background 0.3s ease-in-out;
+}
+
+/* Switch Toggle - Makes it Look Like a Small Slider */
+.switch-toggle {
+  width: 30px;
+  height: 30px;
+  background: white;
+  border-radius: 50%;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease-in-out, background 0.3s ease-in-out;
+}
+
+/* "On" State - Moves Toggle Up */
+.on {
+  transform: translateY(-20px);
+  background: #ffcc00; /* Yellow to resemble a lit switch */
+}
+
+/* "Off" State - Moves Toggle Down */
+.off {
+  transform: translateY(20px);
+  background: #666; /* Dim for off state */
+/* Small Dark Mode Icon */
+.dark-mode-indicator {
+  font-size: 20px;
+  margin-right: 10px;
+  color: white;
+}}
